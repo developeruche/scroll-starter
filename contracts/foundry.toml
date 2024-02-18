@@ -14,7 +14,8 @@ remappings = [
 ]
 
 [rpc_endpoints]
-sepolia = "${SEPOLIA_RPC_URL}"
+scroll-sepolia = "${SCROLL_SEPOLIA_RPC_URL}"
+scroll = "${SCROLL_RPC_URL}"
 
 [etherscan]
-sepolia = { key = "${ETHERSCAN_API_KEY}" }
+scroll-sepolia-key = { key = "${ETHERSCAN_API_KEY}" }
