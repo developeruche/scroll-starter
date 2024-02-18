@@ -1,6 +1,6 @@
 import { http, createConfig } from "wagmi";
-import { type Chain, optimismSepolia, optimism } from "wagmi/chains";
-import { walletConnect, injected, coinbaseWallet } from "wagmi/connectors";
+import { type Chain, scroll, scrollSepolia} from "wagmi/chains";
+import { walletConnect, injected } from "wagmi/connectors";
 
 //[x] - 1. Get projectId at https://cloud.walletconnect.com
 //[x] - you can put projectID in an .env.local instead of using it
@@ -15,21 +15,17 @@ const metadata = {
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
-const chains = [optimism, optimismSepolia] as [Chain, ...Chain[]];
+const chains = [scroll, scrollSepolia, ] as [Chain, ...Chain[]];
 
 export const config = createConfig({
   chains,
   transports: {
-    [optimism.id]: http(),
-    [optimismSepolia.id]: http(),
+    [scroll.id]: http(),
+    [scrollSepolia.id]: http(),
   },
   connectors: [
     walletConnect({ projectId, metadata, showQrModal: false }),
-    injected({ shimDisconnect: true }),
-    coinbaseWallet({
-      appName: metadata.name,
-      appLogoUrl: metadata.icons[0],
-    }),
+    injected({ shimDisconnect: true })
   ],
   ssr: true,
 });
